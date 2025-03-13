@@ -16,6 +16,8 @@ import {
 
 import { Badge } from "@/components/ui/badge";
 import { Layers3Icon, CuboidIcon as CubeIcon, BoxIcon } from "lucide-react";
+import { Suspense } from "react";
+import { Loader } from "./components/loader";
 
 export default function App() {
   return (
@@ -54,19 +56,21 @@ export default function App() {
       {/* 3D Canvas */}
       <div className="w-full h-[300px] md:h-[400px] rounded-lg overflow-hidden border mb-8">
         <Canvas>
-          <PerspectiveCamera makeDefault position={[0, 0, 5]} />
-          <OrbitControls enableZoom={false} autoRotate />
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[10, 10, 5]} intensity={1} />
+          <Suspense fallback={<Loader />}>
+            <PerspectiveCamera makeDefault position={[0, 0, 5]} />
+            <OrbitControls enableZoom={false} autoRotate />
+            <ambientLight intensity={0.5} />
+            <directionalLight position={[10, 10, 5]} intensity={1} />
 
-          <Float speed={1.5} rotationIntensity={1} floatIntensity={1}>
-            <mesh>
-              <boxGeometry args={[1, 1, 1]} />
-              <meshStandardMaterial color="#0070f3" />
-            </mesh>
-          </Float>
+            <Float speed={1.5} rotationIntensity={1} floatIntensity={1}>
+              <mesh>
+                <boxGeometry args={[1, 1, 1]} />
+                <meshStandardMaterial color="#0070f3" />
+              </mesh>
+            </Float>
 
-          <Environment preset="city" />
+            <Environment preset="city" />
+          </Suspense>
         </Canvas>
       </div>
 
