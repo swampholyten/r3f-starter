@@ -1,11 +1,3 @@
-import { Canvas } from "@react-three/fiber";
-import {
-  OrbitControls,
-  PerspectiveCamera,
-  Environment,
-  Float,
-} from "@react-three/drei";
-
 import {
   Card,
   CardContent,
@@ -18,6 +10,8 @@ import { Badge } from "@/components/ui/badge";
 import { Layers3Icon, CuboidIcon as CubeIcon, BoxIcon } from "lucide-react";
 import { Suspense } from "react";
 import { Loader } from "./components/loader";
+
+import TCanvas from "./components/canvas";
 
 export default function App() {
   return (
@@ -55,6 +49,7 @@ export default function App() {
 
       {/* 3D Canvas */}
       <div className="w-full h-[300px] md:h-[400px] rounded-lg overflow-hidden border mb-8">
+<<<<<<< HEAD
         <Canvas>
           <Suspense fallback={<Loader />}>
             <PerspectiveCamera makeDefault position={[0, 0, 5]} />
@@ -72,6 +67,9 @@ export default function App() {
             <Environment preset="city" />
           </Suspense>
         </Canvas>
+=======
+        <TCanvas />
+>>>>>>> example
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
